@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Checkpoint : MonoBehaviour
-{
+{   
     [SerializeField] private Vector3 _playerPosition;
+    [SerializeField] public Text _checkpointText;
     void Start()
     {
         LoadData();
+        UpdateCheckpointText();
     }
 
     
@@ -22,6 +25,14 @@ public class Checkpoint : MonoBehaviour
 
         }
     
+    }
+
+    private void  UpdateCheckpointText()
+    {
+        if (_checkpointText != null)
+        {
+            _checkpointText.text = "Last Checkpoint: (" + _playerPosition.x + ", " + _playerPosition.y + ", " + _playerPosition.z + ")";
+        }
     }
 
     public void LoadData()
